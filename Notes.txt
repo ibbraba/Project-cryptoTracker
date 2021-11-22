@@ -1,0 +1,6 @@
+Notes relatives au projet :
+
+
+TODO: Ecrire les tests à effectuer en français puis cocher leur validation
+
+
