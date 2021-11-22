@@ -34,28 +34,23 @@ class AppController extends AbstractController
      */
 
 
-    private $client;
-
-    public function __construct(HttpClientInterface $client){
-
-        $this->client = $client;
-    }
 
 
-    public function index(CallApiService $callApiService, $client): Response
+
+    public function index(CallApiService $callApiService): Response
     {
+        $data = $callApiService->getYahooData();
 
 
+        // Fetch Yahoo API on APPLE stock only
 
 
-        // Fetch Yahoo API
-       $response = $this->client->request('GET', "")
 
 
 
         return $this->render('app/index.html.twig', [
             'controller_name' => 'AppController',
-
+            'data' => $data
 
         ]);
     }
