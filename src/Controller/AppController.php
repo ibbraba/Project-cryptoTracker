@@ -11,6 +11,17 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class AppController extends AbstractController
 {
+
+
+    /*
+     * TODO Application chart
+     * Retrieves cryptocurrencies data, and give investment infos
+     * Data: Current price, Open Price, Close Price, 52 week High/low, Avg high/low
+     * Extra: Moving averages (200, 90, 30)
+     *
+     */
+
+
     /**
      * @Route("/", name="app")
      * INDEX Page
@@ -24,22 +35,9 @@ class AppController extends AbstractController
      * @param $client
      * @return Response
      */
-
-    /*
-     * TODO Application chart
-     * Retrieves cryptocurrencies data, and give investment infos
-     * Data: Current price, Open Price, Close Price, 52 week High/low, Avg high/low
-     * Extra: Moving averages (200, 90, 30)
-     *
-     */
-
-
-
-
-
     public function index(CallApiService $callApiService): Response
     {
-        $data = $callApiService->getYahooData();
+        $btcData = $callApiService->getBTCData();
 
 
         // Fetch Yahoo API on APPLE stock only
@@ -50,7 +48,7 @@ class AppController extends AbstractController
 
         return $this->render('app/index.html.twig', [
             'controller_name' => 'AppController',
-            'data' => $data
+            'data' => $btcData
 
         ]);
     }

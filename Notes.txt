@@ -4,3 +4,15 @@ Notes relatives au projet :
 TODO: Ecrire les tests à effectuer en français puis cocher leur validation
 
 
+
+
+
+Pourquoi tester ? S'assurer que la modification du code ne casse rien, et localiser les problèmes de fonctionnement.
+
+Test APi :
+- Verifier que le statut de reponse est 200
+- Verifier qu'il n'y a pas d'erreurs
+- Tester un appel sur une vraie option
+- Tester un apppel sur une fausse option
+- S'assurer que la fonction qui envoie l'appel retourne un tableau
+

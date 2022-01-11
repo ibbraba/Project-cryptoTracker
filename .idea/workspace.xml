@@ -2,17 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b81b95da-b8db-4ffa-a6d8-99f4148abf7d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/tests/AppTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AppController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AppController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Service/CallApiService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/CallApiService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/app/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/app/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,7 +191,9 @@
       <updated>1633820918726</updated>
       <workItem from="1633820919956" duration="5752000" />
       <workItem from="1634061904465" duration="828000" />
-      <workItem from="1637601048153" duration="13085000" />
+      <workItem from="1637601048153" duration="13213000" />
+      <workItem from="1637653914195" duration="2599000" />
+      <workItem from="1641652649493" duration="1548000" />
     </task>
     <servers />
   </component>
@@ -214,5 +210,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
