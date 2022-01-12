@@ -1,0 +1,12 @@
+<p>stock works!</p>
+
+<div *ngFor="let stock of stocks">
+  <h3>{{stock.name}}</h3>
+  <p>{{stock.symbol}} </p>
+  <p>{{stock.currentPrice}} $</p>
+  <button (click)="onSelect(stock)">Détails</button>
+
+</div>
+
+
+<app-stock-detail [stock]="selectedstock"></app-stock-detail>

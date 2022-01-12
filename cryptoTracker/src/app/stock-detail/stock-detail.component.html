@@ -1,0 +1,17 @@
+<p>stock-detail works!</p>
+<div *ngIf="stock">
+
+  <div class="card text-center">
+    <div class="card-header">
+      Details de l'action {{stock.symbol}}
+    </div>
+    <div class="card-body">
+
+      <h5 class="card-title">{{stock.name}}</h5>
+      <p>ID : {{stock.id}}</p>
+      <p>{{stock.currentPrice}} $</p>
+    </div>
+
+  </div>
+
+</div>

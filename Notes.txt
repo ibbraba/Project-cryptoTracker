@@ -16,3 +16,13 @@ Test APi :
 - Tester un apppel sur une fausse option
 - S'assurer que la fonction qui envoie l'appel retourne un tableau
 
+
+11/01/22:
+-Creating Angular project with components
+
+12/01/22:
+-Discover Angular: Set the view of card components
+-Single Stock compenent
+-Stock Detail Component
+-List of available stocks
+-Nav between stocks and Index
