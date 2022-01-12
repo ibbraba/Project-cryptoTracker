@@ -13,10 +13,6 @@ export class StockComponent implements OnInit {
 
   stocks: Stock[] =[]
 
-  selectedstock?: Stock;
-  onSelect(stock: Stock): void {
-    this.selectedstock = stock;
-  }
 
 
   constructor(private stockService: stockService ) { }
