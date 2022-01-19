@@ -4,8 +4,18 @@
   <h3>{{stock.name}}</h3>
   <p>{{stock.symbol}} </p>
   <p>{{stock.currentPrice}} $</p>
-  <a routerLink="/detail/{{stock.id}}">Détails </a>
+  <a class="btn btn-primary" routerLink="/detail/{{stock.id}}">Détails </a>
 
 </div>
 </div>
 
+
+
+<div class="stock-list">
+
+    <div class="card" style="width: 18rem" *ngFor="let item of stock.data">
+    <h5>{{item.name | json}}</h5>
+    <p>{{item.symbol | json}} </p>
+    </div>
+
+</div>

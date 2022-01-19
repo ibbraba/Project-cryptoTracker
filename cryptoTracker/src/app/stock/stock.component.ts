@@ -13,9 +13,21 @@ export class StockComponent implements OnInit {
 
   stocks: Stock[] =[]
 
+  stock: any;
 
 
-  constructor(private stockService: stockService ) { }
+
+  constructor(private stockService: stockService ) {
+    this.stockService.getData().subscribe(dataFeteched =>{
+
+      this.stock=dataFeteched
+
+
+      console.log(this.stock)
+    })
+
+
+  }
 
   ngOnInit(): void {
     this.getStocks();
@@ -24,5 +36,7 @@ export class StockComponent implements OnInit {
   getStocks(): void{
     this.stocks = this.stockService.getStocks()
   }
+
+
 
 }
