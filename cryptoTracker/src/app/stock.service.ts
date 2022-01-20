@@ -15,7 +15,9 @@ export class stockService {
 
 
   getData(){
-    let url = "http://api.marketstack.com/v1/tickers?access_key=46f97a8dd5ebdadb0e096faf271be26d"
+
+    let key = "6YF_nA5aOIv8qC4T83xCKuqVXeoh2RuQ"
+    let url = "https://api.polygon.io/v2/aggs/ticker/AAPL/prev?adjusted=true&apiKey=6YF_nA5aOIv8qC4T83xCKuqVXeoh2RuQ"
     return this.HttpClient.get(url);
   }
 

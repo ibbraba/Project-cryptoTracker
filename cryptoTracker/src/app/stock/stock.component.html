@@ -12,10 +12,14 @@
 
 
 <div class="stock-list">
+    <div *ngIf="stock">
+    <div class="card text-white bg-primary mb-3" style="width: 18rem; margin: 25%;padding: 10% ">
+    <h5 class="stock-title">{{stock.results[0].T }}</h5>
 
-    <div class="card" style="width: 18rem" *ngFor="let item of stock.data">
-    <h5>{{item.name | json}}</h5>
-    <p>{{item.symbol | json}} </p>
+      <span class="stock-currentPrice">Ouvert: {{stock.results[0].o}}</span>
+      <span class="stock-currentPrice">Fermé: {{stock.results[0].c}}</span>
+
+
     </div>
-
+    </div>
 </div>

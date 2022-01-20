@@ -14,7 +14,7 @@ export class StockComponent implements OnInit {
   stocks: Stock[] =[]
 
   stock: any;
-
+  jsonStock: any;
 
 
   constructor(private stockService: stockService ) {
@@ -24,6 +24,7 @@ export class StockComponent implements OnInit {
 
 
       console.log(this.stock)
+
     })
 
 
