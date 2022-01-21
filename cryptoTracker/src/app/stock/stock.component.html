@@ -1,4 +1,4 @@
-<p xmlns="http://www.w3.org/1999/html">stock works!</p>
+
 <div STYLE="display: flex; flex-direction: row; justify-content: space-around">
 <div *ngFor="let stock of stocks"  >
   <h3>{{stock.name}}</h3>
@@ -10,9 +10,13 @@
 </div>
 
 
+<!--<div *ngIf="loader.loading$ | async ">-->
+<!--<mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>-->
+<!--</div>-->
+
 
 <div class="stock-list">
-    <div *ngIf="stock">
+    <div *ngIf="stock; else spinner">
     <div class="card text-white bg-primary mb-3" style="width: 18rem; margin: 25%;padding: 10% ">
     <h5 class="stock-title">{{stock.results[0].T }}</h5>
 
@@ -22,4 +26,8 @@
 
     </div>
     </div>
+
+    <ng-template #spinner>
+      <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
+    </ng-template>
 </div>

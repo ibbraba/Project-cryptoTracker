@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {LoaderServiceService} from "./loader-service.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'cryptoTracker';
+  title = 'CryptoTracker';
+  loading$= this.loader.loading$
+  constructor(private loader:LoaderServiceService, private Http: HttpClient) {
+  }
 }

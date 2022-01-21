@@ -6,7 +6,11 @@ import { AppComponent } from './app.component';
 import { StockComponent } from './stock/stock.component';
 import { StockDetailComponent } from './stock-detail/stock-detail.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import  { MatButtonModule } from "@angular/material/button";
+import {NetworkInterceptor} from "./network.interceptor";
 
 @NgModule({
   declarations: [
@@ -18,9 +22,16 @@ import { HttpClientModule } from "@angular/common/http";
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule,
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: NetworkInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
