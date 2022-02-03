@@ -18,7 +18,7 @@ export class StockDetailComponent implements OnInit {
   symbol = String(this.route.snapshot.paramMap.get('symbol'));
   singleStock: any
   stockName: any
-
+  loading$= this.loader.loading$
 
   constructor(
     private route: ActivatedRoute,

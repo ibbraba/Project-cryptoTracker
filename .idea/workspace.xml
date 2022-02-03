@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b81b95da-b8db-4ffa-a6d8-99f4148abf7d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cryptoTracker/src/app/stock.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cryptoTracker/src/app/stock.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cryptoTracker/src/app/stock/stock.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/cryptoTracker/src/app/stock/stock.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cryptoTracker/src/app/stock/stock.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cryptoTracker/src/app/stock/stock.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Notes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cryptoTracker/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/cryptoTracker/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cryptoTracker/src/app/stock-detail/stock-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/cryptoTracker/src/app/stock-detail/stock-detail.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cryptoTracker/src/app/stock-detail/stock-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cryptoTracker/src/app/stock-detail/stock-detail.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,7 +198,13 @@
       <workItem from="1641652649493" duration="1548000" />
       <workItem from="1641933150022" duration="11400000" />
       <workItem from="1642408227913" duration="5970000" />
-      <workItem from="1642583905086" duration="8965000" />
+      <workItem from="1642583905086" duration="11718000" />
+      <workItem from="1642676290434" duration="4451000" />
+      <workItem from="1642755499171" duration="1254000" />
+      <workItem from="1642759930930" duration="9000" />
+      <workItem from="1642761015884" duration="13000" />
+      <workItem from="1642778272042" duration="922000" />
+      <workItem from="1643871500389" duration="10059000" />
     </task>
     <servers />
   </component>

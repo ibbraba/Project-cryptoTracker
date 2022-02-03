@@ -28,6 +28,6 @@ Test APi :
 -Nav between stocks and Index
 
 17/01/22:
--TODO: Fetch HTTP JSON Response and display them
+
 -TODO: Connect with Symfony to store data in DB
 -TODO: Charts with Angular
