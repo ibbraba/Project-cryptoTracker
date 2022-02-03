@@ -5,7 +5,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Location } from '@angular/common';
 import {LoaderServiceService} from "../loader-service.service";
 import {HttpClient} from "@angular/common/http";
-
+import  { mockStock } from "../mock-stock";
 
 @Component({
   selector: 'app-stock-detail',
@@ -17,6 +17,8 @@ export class StockDetailComponent implements OnInit {
 
   symbol = String(this.route.snapshot.paramMap.get('symbol'));
   singleStock: any
+  stockName: any
+
 
   constructor(
     private route: ActivatedRoute,
@@ -39,6 +41,11 @@ export class StockDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getStock()
     console.log(this.url)
+    this.getStockName()
+  }
+
+  getStockName() {
+    this.stockName = this.stockService.getSingleStock(this.symbol)
   }
 
   getStock(): void {

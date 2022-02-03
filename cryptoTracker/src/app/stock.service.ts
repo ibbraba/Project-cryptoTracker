@@ -41,6 +41,8 @@ export class stockService {
 
   }
 
+
+
   getStock(symbol: string): Observable<Stock> {
     // For now, assume that a hero with the specified `id` always exists.
     // Error handling will be added in the next step of the tutorial.
