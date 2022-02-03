@@ -5,6 +5,7 @@ import {stockService} from "../stock.service";
 import {LoaderServiceService} from "../loader-service.service";
 import {HttpClient} from "@angular/common/http";
 
+
 @Component({
   selector: 'app-stock',
   templateUrl: './stock.component.html',
@@ -18,16 +19,13 @@ export class StockComponent implements OnInit {
   stock: any;
   jsonStock: any;
   loading$= this.loader.loading$
+  singleStock: any
 
 
   constructor(private stockService: stockService, public loader: LoaderServiceService, private httpClient: HttpClient) {
     this.stockService.getData().subscribe(dataFeteched =>{
 
-        this.stock=dataFeteched
-
-
-
-
+      this.stock=dataFeteched
       console.log(this.stock)
 
     })
@@ -37,11 +35,15 @@ export class StockComponent implements OnInit {
 
   ngOnInit(): void {
     this.getStocks();
+
+    console.log(this.stocks)
   }
 
   getStocks(): void{
     this.stocks = this.stockService.getStocks()
   }
+
+
 
 
 

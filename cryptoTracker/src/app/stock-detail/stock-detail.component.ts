@@ -3,6 +3,8 @@ import { Stock } from "../stock";
 import { stockService } from "../stock.service";
 import { ActivatedRoute } from "@angular/router";
 import { Location } from '@angular/common';
+import {LoaderServiceService} from "../loader-service.service";
+import {HttpClient} from "@angular/common/http";
 
 
 @Component({
@@ -13,21 +15,45 @@ import { Location } from '@angular/common';
 export class StockDetailComponent implements OnInit {
   @Input() stock?: Stock
 
+  symbol = String(this.route.snapshot.paramMap.get('symbol'));
+  singleStock: any
+
   constructor(
     private route: ActivatedRoute,
     private stockService: stockService,
-    private location: Location
-  ) {}
+    private location: Location,
+
+    public loader: LoaderServiceService,
+    private httpClient: HttpClient
+  ) {
+    this.stockService.getAPIData(this.url).subscribe(dataFeteched =>{
+
+      this.singleStock=dataFeteched
+
+      console.log(this.singleStock)
+
+    })
+
+  }
 
   ngOnInit(): void {
     this.getStock()
+    console.log(this.url)
   }
 
   getStock(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.stockService.getStock(id)
+
+    this.stockService.getStock(this.symbol)
       .subscribe(stock => this.stock = stock);
   }
+
+  url:string  = "https://api.polygon.io/v2/aggs/ticker/" + this.symbol +  "/prev?adjusted=true&apiKey=6YF_nA5aOIv8qC4T83xCKuqVXeoh2RuQ"
+
+
+  // Custom URL OK
+  // Call API
+  // Render SingleStock
+  // Chart JS ...
 
   goBack(): void {
     this.location.back()

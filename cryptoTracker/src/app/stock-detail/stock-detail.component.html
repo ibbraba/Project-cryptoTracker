@@ -1,15 +1,16 @@
 
-<div *ngIf="stock">
+<div *ngIf="singleStock">
 
   <div  class="card text-center">
     <div class="card-header">
-      Details de l'action {{stock.symbol}}
+      Details de l'action {{singleStock.symbol}}
     </div>
     <div class="card-body">
 
-      <h5 class="card-title">{{stock.name}}</h5>
-      <p>ID : {{stock.id}}</p>
-      <p>{{stock.currentPrice}} $</p>
+      <h5 class="card-title">{{singleStock.name}}</h5>
+      <p>Ouvert:  {{singleStock.results[0].o}}</p>
+      <p>Fermé: {{singleStock.results[0].c}}</p>
+
     </div>
 
   </div>

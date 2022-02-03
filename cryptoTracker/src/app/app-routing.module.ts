@@ -6,7 +6,7 @@ import {StockDetailComponent} from "./stock-detail/stock-detail.component";
 const routes: Routes = [
   {path: "", redirectTo:"stock", pathMatch:"full"},
   {path: 'stock', component: StockComponent},
-  {path: "detail/:id", component: StockDetailComponent}
+  {path: "detail/:symbol", component: StockDetailComponent}
 ];
 
 @NgModule({
