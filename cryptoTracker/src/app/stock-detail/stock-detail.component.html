@@ -1,8 +1,11 @@
-<div *ngIf="loader.loading$">
+<div *ngIf="loader.loading$ | async">
   <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
 </div>
 
-
+<div *ngIf="callAPIError">
+  Erreur {{ callAPIError.status}}
+  <p class="text-danger"> {{callAPIError.error}} </p>
+</div>
 
 <div *ngIf="singleStock">
 

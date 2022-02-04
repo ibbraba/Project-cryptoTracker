@@ -15,29 +15,31 @@ export class StockComponent implements OnInit {
 
 
   stocks: Stock[] =[]
-
+  StockResult:any = []
   stock: any;
   jsonStock: any;
   loading$= this.loader.loading$
   singleStock: any
+  callAPIError:[] = []
 
 
-  constructor(private stockService: stockService, public loader: LoaderServiceService, private httpClient: HttpClient) {
-    this.stockService.getData().subscribe(dataFeteched =>{
-
-      this.stock=dataFeteched
-      console.log(this.stock)
-
-    })
-
-
-  }
+  constructor(public stockService: stockService, public loader: LoaderServiceService, private httpClient: HttpClient) {}
 
   ngOnInit(): void {
     this.getStocks();
-
-    console.log(this.stocks)
+    this.callAllStocks()
+    //console.log(this.stocks)
   }
+
+
+  callAllStocks(){
+    this.stocks.forEach(
+      stock => this.stockService.getAPIData(stock.url).subscribe(
+        dataFeteched =>{ this.StockResult.push(dataFeteched), console.log(this.StockResult) },
+      )
+    )
+  }
+
 
   getStocks(): void{
     this.stocks = this.stockService.getStocks()

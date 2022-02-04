@@ -19,6 +19,8 @@ export class StockDetailComponent implements OnInit {
   singleStock: any
   stockName: any
   loading$= this.loader.loading$
+  callAPIError: any
+
 
   constructor(
     private route: ActivatedRoute,
@@ -28,13 +30,12 @@ export class StockDetailComponent implements OnInit {
     public loader: LoaderServiceService,
     private httpClient: HttpClient
   ) {
-    this.stockService.getAPIData(this.url).subscribe(dataFeteched =>{
+    this.stockService.getAPIData(this.url).subscribe(
+      dataFeteched =>{ this.singleStock=dataFeteched, console.log(this.singleStock) },
 
-      this.singleStock=dataFeteched
+      error => { this.callAPIError=error ,console.log("Error ! ", error) }
 
-      console.log(this.singleStock)
-
-    })
+    )
 
   }
 
@@ -43,6 +44,8 @@ export class StockDetailComponent implements OnInit {
     console.log(this.url)
     this.getStockName()
   }
+
+
 
   getStockName() {
     this.stockName = this.stockService.getSingleStock(this.symbol)

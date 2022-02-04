@@ -12,17 +12,13 @@ export class stockService {
   oldkey= "HNRFC6XKA19ATR4J";
 
   key= "6YF_nA5aOIv8qC4T83xCKuqVXeoh2RuQ"
-  url= "https://api.polygon.io/v2/aggs/ticker/AAPL/prev?adjusted=true&apiKey=6YF_nA5aOIv8qC4T83xCKuqVXeoh2RuQ"
+
 
   customUrl = ""
 
   constructor(private HttpClient:HttpClient) { }
 
 
-  getData(){
-
-    return this.HttpClient.get(this.url);
-  }
 
 
   getAPIData(url: string){
