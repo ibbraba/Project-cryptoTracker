@@ -4,6 +4,7 @@ import { mockStock } from "../mock-stock";
 import {stockService} from "../stock.service";
 import {LoaderServiceService} from "../loader-service.service";
 import {HttpClient} from "@angular/common/http";
+import {isEmpty} from "rxjs";
 
 
 @Component({
@@ -16,8 +17,9 @@ export class StockComponent implements OnInit {
 
   stocks: Stock[] =[]
   StockResult:any = []
-  stock: any;
-  jsonStock: any;
+  StockResultErrors:any = []
+  error: boolean =false
+
   loading$= this.loader.loading$
   singleStock: any
   callAPIError:[] = []
@@ -28,7 +30,7 @@ export class StockComponent implements OnInit {
   ngOnInit(): void {
     this.getStocks();
     this.callAllStocks()
-    //console.log(this.stocks)
+
   }
 
 
@@ -36,8 +38,14 @@ export class StockComponent implements OnInit {
     this.stocks.forEach(
       stock => this.stockService.getAPIData(stock.url).subscribe(
         dataFeteched =>{ this.StockResult.push(dataFeteched), console.log(this.StockResult) },
+        error => this.error = true
       )
     )
+
+
+
+
+
   }
 
 

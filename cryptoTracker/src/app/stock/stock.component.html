@@ -1,25 +1,34 @@
+<div *ngIf="loader.loading$ | async">
+
+  <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
+</div>
+
+
+{{ StockResultErrors | json }}
 
 <div STYLE="display: flex; flex-direction: row; justify-content: space-around">
-<div CLASS="card bg-primary text-white card-margin" *ngFor="let option of StockResult"  >
+  <div class="stockErrors" *ngIf="error, else stockResult">
+    <span class="text-danger">An error has occured please try again later. </span>
 
-  <div *ngIf="loader.loading$ | async">
-
-    <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
   </div>
+
+<ng-template #stockResult>
+  <div CLASS="card bg-primary text-white card-margin" *ngFor="let option of StockResult"  >
+
+
+
 
 
   <h3>{{option.ticker}} </h3>
   <span class="stock-currentPrice">Ouvert: {{option.results[0].o}}</span>
   <span class="stock-currentPrice mb-3">Fermé: {{option.results[0].c}}</span>
 
+    <a class="btn btn-light" routerLink="/detail/{{option.ticker}}">Voir les Détails </a>
+
+  </div>
 
 
-  <a class="btn btn-light" routerLink="/detail/{{option.symbol}}">Voir les Détails </a>
-
-
-
-
-</div>
+</ng-template>
 </div>
 
 

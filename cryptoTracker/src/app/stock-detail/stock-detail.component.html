@@ -2,9 +2,9 @@
   <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
 </div>
 
-<div *ngIf="callAPIError">
+<div class="text-center" *ngIf="callAPIError">
   Erreur {{ callAPIError.status}}
-  <p class="text-danger"> {{callAPIError.error}} </p>
+  <p class="text-danger"> {{callAPIError.statusText}} </p>
 </div>
 
 <div *ngIf="singleStock">
