@@ -4,12 +4,15 @@
 </div>
 
 
-{{ StockResultErrors | json }}
+<div style="text-align: center">
+  <button class="text-center btn btn-primary" (click)="callAllStocks()">Fetch yesterday stocks prices</button>
+  <button class="btn btn-info" (click)="callRangeData()"> Call Apple range Data </button>
+</div>
+
 
 <div STYLE="display: flex; flex-direction: row; justify-content: space-around">
   <div class="stockErrors" *ngIf="error, else stockResult">
     <span class="text-danger">An error has occured please try again later. </span>
-
   </div>
 
 <ng-template #stockResult>
