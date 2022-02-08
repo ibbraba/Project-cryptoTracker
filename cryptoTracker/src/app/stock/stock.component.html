@@ -7,10 +7,20 @@
 <div style="text-align: center">
   <button class="text-center btn btn-primary" (click)="callAllStocks()">Fetch yesterday stocks prices</button>
   <button class="btn btn-info" (click)="callRangeData()"> Call Apple range Data </button>
+  <button class="btn btn-info" (click)="getChart()">Get Charts </button>
 </div>
 
 
+
+
 <div STYLE="display: flex; flex-direction: row; justify-content: space-around">
+
+  <div *ngIf="RangeData">
+    <p>Data : {{RangeData.results[0].o | json}} </p>
+
+  </div>
+
+
   <div class="stockErrors" *ngIf="error, else stockResult">
     <span class="text-danger">An error has occured please try again later. </span>
   </div>
@@ -33,6 +43,8 @@
 
 </ng-template>
 </div>
+
+
 
 
 <!--<div *ngIf="loader.loading$ | async ">-->

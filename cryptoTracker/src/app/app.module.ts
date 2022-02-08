@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { Component, OnInit, ViewChild} from "@angular/core";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StockComponent } from './stock/stock.component';
@@ -11,6 +11,7 @@ import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import  { MatButtonModule } from "@angular/material/button";
 import {NetworkInterceptor} from "./network.interceptor";
+import {NgChartsModule} from 'ng2-charts'
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {NetworkInterceptor} from "./network.interceptor";
     HttpClientModule,
     MatProgressSpinnerModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    NgChartsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
