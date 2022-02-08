@@ -37,9 +37,6 @@ export class StockComponent implements OnInit {
 
   ngOnInit(): void {
     this.getStocks();
-    this.callRangeData()
-    this.getChart()
-
   }
 
 
@@ -61,25 +58,25 @@ export class StockComponent implements OnInit {
       error => this.error = true
     )
 
-    //console.log(this.RangeData)
     for (let i = 0; i < this.RangeData.results.length; i++) {
-
       this.RangeDataResult.push(this.RangeData.results[i].o)
-
     }
 
-
+    return this.RangeDataResult
   }
 
 
     getChart(){
+      this.callRangeData()
+
       let ctx:any = document.getElementById("chart")
       console.log( ctx)
       let chartCanvas = new Chart(ctx , {
         type: 'line',
         data : {
+          labels: [1,2,3,4,5],
           datasets:[{
-            label : "Weekly Trend",
+            label : "Apple Weekly Trend Chart",
             data : this.RangeDataResult,
             fill: true,
             backgroundColor: "#00f4ff"
