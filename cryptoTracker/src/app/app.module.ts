@@ -11,13 +11,15 @@ import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import  { MatButtonModule } from "@angular/material/button";
 import {NetworkInterceptor} from "./network.interceptor";
-import {NgChartsModule} from 'ng2-charts'
+import {NgChartsModule} from 'ng2-charts';
+import { StockChartComponent } from './stock-chart/stock-chart.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     StockComponent,
-    StockDetailComponent
+    StockDetailComponent,
+    StockChartComponent
   ],
   imports: [
     BrowserModule,

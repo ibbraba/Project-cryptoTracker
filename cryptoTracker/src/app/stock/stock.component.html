@@ -7,11 +7,13 @@
 
 
 <div style="text-align: center">
-  <button class="text-center btn btn-primary" (click)="callAllStocks()">Fetch yesterday stocks prices</button>
-  <button class="btn btn-info" (click)="getChart()">Get Charts </button>
+  <button class="text-center btn btn-primary" (click)="getStocks()">Fetch yesterday stocks prices</button>
+
 </div>
 
-
+<div *ngIf="!stocks" class="text-center">
+  <h2 class="text-success">Bienvenue sur CryptoNet !</h2>
+</div>
 
 
 <div STYLE="display: flex; flex-direction: row; justify-content: space-around">
@@ -23,17 +25,19 @@
   </div>
 
 <ng-template #stockResult>
-  <div CLASS="card bg-primary text-white card-margin" *ngFor="let option of StockResult"  >
+  <div CLASS="card bg-primary text-white card-margin" *ngFor="let option of stocks"  >
+
+    <h3>{{option.name}}</h3>
+    <a class="btn btn-light" routerLink="/detail/{{option.symbol}}">Voir les Détails </a>
 
 
 
-
-
+ <!--  UNCOMMENT IF YOU USE CALLALLSTOCKS FUNCTION
   <h3>{{option.ticker}} </h3>
   <span class="stock-currentPrice">Ouvert: {{option.results[0].o}}</span>
   <span class="stock-currentPrice mb-3">Fermé: {{option.results[0].c}}</span>
 
-    <a class="btn btn-light" routerLink="/detail/{{option.ticker}}">Voir les Détails </a>
+    <a class="btn btn-light" routerLink="/detail/{{option.ticker}}">Voir les Détails </a>-->
 
   </div>
 
