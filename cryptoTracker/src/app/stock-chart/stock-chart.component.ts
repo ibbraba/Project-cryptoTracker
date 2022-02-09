@@ -13,13 +13,17 @@ import {LoaderServiceService} from "../loader-service.service";
 })
 export class StockChartComponent implements OnInit {
 
+  //URL
+  symbol = String(this.route.snapshot.paramMap.get('symbol'));
+  today:number = Date.now()
   //Range stocks
-  RangeUrl: string = "https://api.polygon.io/v2/aggs/ticker/AAPL/range/1/week/2022-01-03/2022-02-07?adjusted=false&sort=asc&limit=20&apiKey=6YF_nA5aOIv8qC4T83xCKuqVXeoh2RuQ"
+  RangeUrl: string = "https://api.polygon.io/v2/aggs/ticker/" + this.symbol +"/range/1/week/2022-01-03/" + this.today + "?adjusted=false&sort=asc&limit=20&apiKey=6YF_nA5aOIv8qC4T83xCKuqVXeoh2RuQ"
+
+
+  //Managing API Call
   RangeData: any = []
   RangeDataResult: any = []
   error: boolean =false
-  symbol = String(this.route.snapshot.paramMap.get('symbol'));
-
 
   constructor(private stockService: stockService,
               private route: ActivatedRoute,
@@ -28,13 +32,10 @@ export class StockChartComponent implements OnInit {
 ) { }
 
   ngOnInit(): void {
+    console.log(this.RangeUrl)
+    this.callRangeData()
   }
 
-  DateTries(){
-    let today = Date.now()
-
-    console.log(today)
-  }
 
 
   callRangeData() {
@@ -44,6 +45,8 @@ export class StockChartComponent implements OnInit {
       },
       error => this.error = true
     )
+
+    console.log(this.RangeData + "RangeData")
 
     for (let i = 0; i < this.RangeData.results.length; i++) {
       this.RangeDataResult.push(this.RangeData.results[i].o)
@@ -56,16 +59,16 @@ export class StockChartComponent implements OnInit {
     this.callRangeData()
 
     let ctx:any = document.getElementById("chart")
-    console.log( ctx)
+    console.log(ctx)
     let chartCanvas = new Chart(ctx , {
       type: 'line',
       data : {
         labels: [1,2,3,4,5],
         datasets:[{
-          label : "Apple Weekly Trend Chart",
+          label : "2022" + this.symbol + " Weekly Trend Chart",
           data : this.RangeDataResult,
           fill: true,
-          backgroundColor: "#00f4ff"
+          backgroundColor: "#003977"
         }]
       }
     })
