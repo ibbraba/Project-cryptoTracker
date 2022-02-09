@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import {LoaderServiceService} from "../loader-service.service";
 
 
+
 @Component({
   selector: 'app-stock-chart',
   templateUrl: './stock-chart.component.html',
@@ -24,6 +25,11 @@ export class StockChartComponent implements OnInit {
   RangeData: any = []
   RangeDataResult: any = []
   error: boolean =false
+
+  // Custom DateTime
+  time: any = []
+  customDateTime: any = []
+
 
   constructor(private stockService: stockService,
               private route: ActivatedRoute,
@@ -50,28 +56,49 @@ export class StockChartComponent implements OnInit {
 
     for (let i = 0; i < this.RangeData.results.length; i++) {
       this.RangeDataResult.push(this.RangeData.results[i].o)
+      this.time.push(this.RangeData.results[i].t)
     }
     console.log(this.RangeDataResult)
-    return this.RangeDataResult
+//    return this.RangeDataResult
   }
 
   getChart(){
     this.callRangeData()
 
+  this.timeTries()
+
     let ctx:any = document.getElementById("chart")
-    console.log(ctx)
+    //console.log(ctx)
     let chartCanvas = new Chart(ctx , {
       type: 'line',
       data : {
-        labels: [1,2,3,4,5],
+        labels: this.customDateTime,
         datasets:[{
-          label : "2022" + this.symbol + " Weekly Trend Chart",
+          label : "2022 " + this.symbol + " Weekly Trend Chart",
           data : this.RangeDataResult,
           fill: true,
-          backgroundColor: "#003977"
+          backgroundColor: "#8aff00"
         }]
       }
     })
   }
+
+
+  timeTries(){
+
+    for (let i = 0; i < this.time.length; i++) {
+        //Transform Timestamp to Date DD/MM
+      const unixtimestamp = this.time[i]
+
+      const dateObject = new  Date(unixtimestamp)
+
+
+      const customDate = dateObject.toLocaleString("fr-Fr", {day : "numeric"} ) + "/" + dateObject.toLocaleString("fr-Fr", {month : "numeric"} )
+      this.customDateTime.push(customDate)
+    }
+    console.log(this.customDateTime)
+    return this.customDateTime
+  }
+
 
 }
