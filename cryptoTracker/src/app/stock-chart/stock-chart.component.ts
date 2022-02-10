@@ -30,6 +30,7 @@ export class StockChartComponent implements OnInit {
   time: any = []
   customDateTime: any = []
 
+  displayChart = false
 
   constructor(private stockService: stockService,
               private route: ActivatedRoute,
@@ -63,9 +64,10 @@ export class StockChartComponent implements OnInit {
   }
 
   getChart(){
+
     this.callRangeData()
 
-  this.timeTries()
+    this.timeTries()
 
     let ctx:any = document.getElementById("chart")
     //console.log(ctx)
@@ -82,6 +84,7 @@ export class StockChartComponent implements OnInit {
       }
     })
   }
+
 
 
   timeTries(){

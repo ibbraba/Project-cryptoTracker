@@ -12,14 +12,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import  { MatButtonModule } from "@angular/material/button";
 import {NetworkInterceptor} from "./network.interceptor";
 import {NgChartsModule} from 'ng2-charts';
-import { StockChartComponent } from './stock-chart/stock-chart.component'
+import { StockChartComponent } from './stock-chart/stock-chart.component';
+import { StockPerformanceComponent } from './stock-performance/stock-performance.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     StockComponent,
     StockDetailComponent,
-    StockChartComponent
+    StockChartComponent,
+    StockPerformanceComponent
   ],
   imports: [
     BrowserModule,
