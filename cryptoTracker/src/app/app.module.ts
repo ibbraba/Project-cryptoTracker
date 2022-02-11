@@ -14,7 +14,8 @@ import {NetworkInterceptor} from "./network.interceptor";
 import {NgChartsModule} from 'ng2-charts';
 import { StockChartComponent } from './stock-chart/stock-chart.component';
 import { StockPerformanceComponent } from './stock-performance/stock-performance.component';
-import { NavbarComponent } from './navbar/navbar.component'
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomePageComponent } from './home-page/home-page.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NavbarComponent } from './navbar/navbar.component'
     StockDetailComponent,
     StockChartComponent,
     StockPerformanceComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

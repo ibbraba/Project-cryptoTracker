@@ -3,9 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import {StockComponent} from "./stock/stock.component";
 import {StockDetailComponent} from "./stock-detail/stock-detail.component";
 import {StockPerformanceComponent} from "./stock-performance/stock-performance.component";
+import {HomePageComponent} from "./home-page/home-page.component";
 
 const routes: Routes = [
-  {path: "", redirectTo:"stock", pathMatch:"full"},
+  {path: "", redirectTo:"home", pathMatch:"full"},
+  {path: "home", component:HomePageComponent },
   {path: 'stock', component: StockComponent},
   {path: "detail/:symbol", component: StockDetailComponent},
   {path: "detail/performance/:symbol", component: StockPerformanceComponent},
