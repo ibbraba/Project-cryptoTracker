@@ -13,7 +13,8 @@ import  { MatButtonModule } from "@angular/material/button";
 import {NetworkInterceptor} from "./network.interceptor";
 import {NgChartsModule} from 'ng2-charts';
 import { StockChartComponent } from './stock-chart/stock-chart.component';
-import { StockPerformanceComponent } from './stock-performance/stock-performance.component'
+import { StockPerformanceComponent } from './stock-performance/stock-performance.component';
+import { NavbarComponent } from './navbar/navbar.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { StockPerformanceComponent } from './stock-performance/stock-performance
     StockComponent,
     StockDetailComponent,
     StockChartComponent,
-    StockPerformanceComponent
+    StockPerformanceComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
