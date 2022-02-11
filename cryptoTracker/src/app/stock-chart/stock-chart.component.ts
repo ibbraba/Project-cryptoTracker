@@ -4,7 +4,7 @@ import {Chart} from "chart.js";
 import { ActivatedRoute } from "@angular/router";
 import { Location } from '@angular/common';
 import {LoaderServiceService} from "../loader-service.service";
-
+import {UrlService} from "../url.service";
 
 
 @Component({
@@ -15,7 +15,8 @@ import {LoaderServiceService} from "../loader-service.service";
 export class StockChartComponent implements OnInit {
 
   //URL
-  symbol = String(this.route.snapshot.paramMap.get('symbol'));
+
+  symbol : string =  String(this.route.snapshot.paramMap.get('symbol'));
   today:number = Date.now()
   //Range stocks
   RangeUrl: string = "https://api.polygon.io/v2/aggs/ticker/" + this.symbol +"/range/1/week/2022-01-03/" + this.today + "?adjusted=false&sort=asc&limit=20&apiKey=6YF_nA5aOIv8qC4T83xCKuqVXeoh2RuQ"
@@ -35,7 +36,8 @@ export class StockChartComponent implements OnInit {
   constructor(private stockService: stockService,
               private route: ActivatedRoute,
               private location : Location,
-              public loader: LoaderServiceService
+              public loader: LoaderServiceService,
+              private urlService: UrlService
 ) { }
 
   ngOnInit(): void {

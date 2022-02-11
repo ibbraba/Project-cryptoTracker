@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {StockPerformanceService} from "../stock-performance.service";
 import { ActivatedRoute } from "@angular/router";
+import {UrlService} from "../url.service";
 
 
 @Component({
@@ -10,7 +11,7 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class StockPerformanceComponent implements OnInit {
 
-    symbol = String(this.route.snapshot.paramMap.get('symbol'));
+    symbol =  String(this.route.snapshot.paramMap.get('symbol'));
     yearDebut: number = new Date("2022-01-02").getTime()
     today: number= Date.now()
     result : any
@@ -19,7 +20,10 @@ export class StockPerformanceComponent implements OnInit {
     // Several Urls : TODO: Generate a service for customs Url
   url:string = "https://api.polygon.io/v2/aggs/ticker/" + this.symbol +"/range/1/week/" + this.yearDebut + "/" + this.today +"?adjusted=true&sort=asc&limit=120&apiKey=6YF_nA5aOIv8qC4T83xCKuqVXeoh2RuQ"
 
-  constructor(public stockPerformanceService: StockPerformanceService, private route: ActivatedRoute,) { }
+  constructor(public stockPerformanceService: StockPerformanceService,
+              private route: ActivatedRoute,
+              private urlService : UrlService,
+              ) { }
 
   ngOnInit(): void {
       this.getDataPerfomance()

@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import {LoaderServiceService} from "../loader-service.service";
 import {HttpClient} from "@angular/common/http";
 import  { mockStock } from "../mock-stock";
+import {UrlService} from "../url.service";
 
 @Component({
   selector: 'app-stock-detail',
@@ -15,7 +16,7 @@ import  { mockStock } from "../mock-stock";
 export class StockDetailComponent implements OnInit {
   @Input() stock?: Stock
 
-  symbol = String(this.route.snapshot.paramMap.get('symbol'));
+  symbol =  String(this.route.snapshot.paramMap.get('symbol'));
   singleStock: any
   stockName: any
   loading$= this.loader.loading$
@@ -26,7 +27,7 @@ export class StockDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private stockService: stockService,
     private location: Location,
-
+    private urlService: UrlService,
     public loader: LoaderServiceService,
     private httpClient: HttpClient
   ) {
@@ -43,6 +44,7 @@ export class StockDetailComponent implements OnInit {
     this.getStock()
     console.log(this.url)
     this.getStockName()
+    console.log(this.symbol + " Symbol ")
   }
 
 
@@ -52,8 +54,8 @@ export class StockDetailComponent implements OnInit {
   }
 
   getStock(): void {
-
-    this.stockService.getStock(this.symbol)
+    let symbol = this.urlService.getSymbol();
+    this.stockService.getStock(symbol)
       .subscribe(stock => this.stock = stock);
   }
 
