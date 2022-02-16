@@ -15,7 +15,8 @@ import {NgChartsModule} from 'ng2-charts';
 import { StockChartComponent } from './stock-chart/stock-chart.component';
 import { StockPerformanceComponent } from './stock-performance/stock-performance.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { HomePageComponent } from './home-page/home-page.component'
+import { HomePageComponent } from './home-page/home-page.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { HomePageComponent } from './home-page/home-page.component'
     MatProgressSpinnerModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    NgChartsModule
+    NgChartsModule,
+    FontAwesomeModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

@@ -1,0 +1,25 @@
+.perf{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 200px;
+  justify-content: center;
+  text-align: center;
+}
+
+.positive-perf{
+  background-color: lightgreen;
+  color: black;
+
+}
+
+.negative-perf{
+  background-color: red;
+  color: black;
+
+}
+
+body{
+  background-color: black;
+}

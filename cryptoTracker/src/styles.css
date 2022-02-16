@@ -14,4 +14,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 
+.positive-perf{
+  background-color: lightgreen;
+  color: black;
+  margin:  0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 600px;
+}
 
+.negative-perf{
+  background-color: red;
+  color: black;
+  margin:  0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 600px;
+}

@@ -26,14 +26,10 @@ export class StockPerformanceComponent implements OnInit {
               ) { }
 
   ngOnInit(): void {
-      this.getDataPerfomance()
-    console.log(this.url)
+
   }
 
 
-  getDataPerfomance(){
-     this.result =  this.stockPerformanceService.getVariation( this.yearDebut, this.today)
-    console.log(this.result)
-  }
+
 
 }

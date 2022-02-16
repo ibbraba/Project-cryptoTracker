@@ -29,6 +29,22 @@
 
 <app-stock-chart></app-stock-chart>
 
+  <button class="btn btn-info" (click)="getPerfomancce()">Get Performance</button>
+  <div class="perf positive-perf" *ngIf="perfResult[0], else negativePerformance">
+    Performance positive
+    <fa-icon [icon]="faCoffee"></fa-icon>
+    <p>Hausse de {{perfResult[1]}} % </p>
+  </div>
+
+
+  <ng-template  #negativePerformance>
+    <div class="perf negative-perf">
+    <h3>Performance négative</h3>
+    </div>
+
+  </ng-template>
+
+
 
 <div class="text-center">
 <button class="btn btn-primary" (click)="goBack()"> Go Back </button>

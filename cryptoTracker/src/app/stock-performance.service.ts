@@ -5,18 +5,46 @@ import { Injectable } from '@angular/core';
 })
 export class StockPerformanceService {
 
+
+  // Gloabal get statistiques Data
+  // Cointaining fonction for each detailled statistic to show
+  // Render in container
+
+
+  // Init State
+  gain : any = true
+  variation : any = 0
+
+
+
+
+
   constructor() { }
 
-  getVariation(oldPrice: number, todayPrice: number){
+
+  getAllPerformanceData(open:any , close:any){
+    this.gain = this.getGain(open, close)
+    this.variation = this.getVariatione(open, close)
+
+
+
+    return [this.gain, this.variation]
+
+  }
+
+
+
+
+  getGain(oldPrice: number, todayPrice: number){
     // If oldPrice = todayPrice  => true (Green Bgc)
     let valueUp:boolean
     return oldPrice > todayPrice ? valueUp = false : valueUp = true
   }
 
-  getPercentage(oldPrice: number, todayPrice: number){
-    let percentage:number = oldPrice / todayPrice
-     percentage.toFixed(2)
-    percentage ++
+  getVariatione(oldPrice: number, todayPrice: number){
+    let percentage:number = todayPrice / oldPrice
+
+
 
     return percentage
   }
