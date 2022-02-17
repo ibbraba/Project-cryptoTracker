@@ -2,6 +2,16 @@
   <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
 </div>
 
+
+<div class="text-center">
+  <button class="btn btn-primary my-3" (click)="goBack()">
+    <fa-icon icon="arrow-left"></fa-icon>
+  </button>
+
+</div>
+
+
+
 <div class="text-center" *ngIf="callAPIError">
   Erreur {{ callAPIError.status}}
   <p class="text-danger"> {{callAPIError.statusText}} </p>
@@ -26,27 +36,34 @@
 </div>
 
 
+<!--TODO: Create app-stock-performance module-->
+<button class="btn btn-info btn-center my-3" (click)="togglePerfShow()">Get Performance</button>
 
-<app-stock-chart></app-stock-chart>
+<div *ngIf="isPerfShown">
 
-  <button class="btn btn-info" (click)="getPerfomancce()">Get Performance</button>
+
   <div class="perf positive-perf" *ngIf="perfResult[0], else negativePerformance">
-    Performance positive
-    <fa-icon [icon]="faCoffee"></fa-icon>
-    <p>Hausse de {{perfResult[1]}} % </p>
+  <h3>Performance positive</h3>
+  <fa-icon class="icon-perf" icon="angle-up"></fa-icon>
+  <p>Hausse de {{perfResult[1]}} % </p>
   </div>
 
 
   <ng-template  #negativePerformance>
-    <div class="perf negative-perf">
-    <h3>Performance négative</h3>
-    </div>
-
+  <div class="perf negative-perf">
+  <h3>Performance négative</h3>
+  <fa-icon class="icon-perf" icon="angle-down"></fa-icon>
+  <p>Baisse de {{perfResult[1]}}</p>
+  </div>
   </ng-template>
 
-
-
-<div class="text-center">
-<button class="btn btn-primary" (click)="goBack()"> Go Back </button>
 </div>
+
+
+
+
+<app-stock-chart></app-stock-chart>
+
+
+
 

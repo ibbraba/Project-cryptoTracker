@@ -31,7 +31,7 @@ export class StockChartComponent implements OnInit {
   time: any = []
   customDateTime: any = []
 
-  displayChart = false
+  isChartCreated = false
 
   constructor(private stockService: stockService,
               private route: ActivatedRoute,
@@ -43,6 +43,7 @@ export class StockChartComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.RangeUrl)
     this.callRangeData()
+    this.getChart()
   }
 
 
@@ -58,6 +59,7 @@ export class StockChartComponent implements OnInit {
     console.log(this.RangeData + "RangeData")
 
     for (let i = 0; i < this.RangeData.results.length; i++) {
+
       this.RangeDataResult.push(this.RangeData.results[i].o)
       this.time.push(this.RangeData.results[i].t)
     }
@@ -66,6 +68,8 @@ export class StockChartComponent implements OnInit {
   }
 
   getChart(){
+
+
 
     this.callRangeData()
 
@@ -85,8 +89,19 @@ export class StockChartComponent implements OnInit {
         }]
       }
     })
+
+
+    this.isChartCreated = true
+
   }
 
+  isChartShown: boolean = true ; // hidden by default
+
+  toggleChartShow() {
+
+    this.isChartShown = ! this.isChartShown;
+
+  }
 
 
   timeTries(){

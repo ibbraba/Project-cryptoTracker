@@ -1,12 +1,39 @@
+<!--
+<button class="get-chart text-center btn btn-info my-3" (click)="toggleChartShow()">Get Charts </button>
 
-<button class="get-chart text-center btn btn-info" (click)="getChart()">Get Charts </button>
-
-
-<div  class="text-center">
-
+<div *ngIf="isChartShown">
 
   <canvas class="chartLine my-5" id="chart" width="500" height="500"></canvas>
 </div>
+-->
+
+
+
+  <div *ngIf="isChartCreated == false, else chartDomain">
+  <button class="get-chart text-center btn btn-info" (click)="getChart()">Get Charts </button>
+  </div>
+
+
+<canvas [ngClass]="{'hidden' : isChartShown==false}" class="chartLine my-5" id="chart" width="500" height="500"></canvas>
+
+<ng-template #chartDomain>
+
+  <div *ngIf="isChartShown, else ShowChartButton" class="text-center">
+    <button class="get-chart text-center btn btn-info" (click)="toggleChartShow()">Hide Chart</button>
+  </div>
+
+  <ng-template #ShowChartButton>
+    <button class="get-chart text-center btn btn-info" (click)="toggleChartShow()">Show Chart</button>
+  </ng-template>
+
+
+  </ng-template>
+
+
+
+
+
+
 
 <!--
 <ng-template #hiddenChart>

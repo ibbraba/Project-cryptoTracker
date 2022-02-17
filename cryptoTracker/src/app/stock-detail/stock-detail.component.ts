@@ -9,6 +9,11 @@ import  { mockStock } from "../mock-stock";
 import {UrlService} from "../url.service";
 import {StockPerformanceComponent} from "../stock-performance/stock-performance.component";
 import {StockPerformanceService} from "../stock-performance.service";
+import {faArrowRight} from "@fortawesome/free-solid-svg-icons/faArrowRight";
+import {FaIconLibrary} from "@fortawesome/angular-fontawesome";
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import {faArrowUp} from "@fortawesome/free-solid-svg-icons/faArrowUp";
+
 
 @Component({
   selector: 'app-stock-detail',
@@ -18,13 +23,19 @@ import {StockPerformanceService} from "../stock-performance.service";
 export class StockDetailComponent implements OnInit {
   @Input() stock?: Stock
 
+  faArrowUp= faArrowUp
+
   symbol =  String(this.route.snapshot.paramMap.get('symbol'));
   singleStock: any
   stockName: any
   loading$= this.loader.loading$
   callAPIError: any
   perfResult : any
+
+  url:string  = "https://api.polygon.io/v2/aggs/ticker/" + this.symbol +  "/prev?adjusted=true&apiKey=6YF_nA5aOIv8qC4T83xCKuqVXeoh2RuQ"
   ApiDataIsFetched : boolean = false
+
+
 
   // Perfomance measures
 
@@ -40,20 +51,11 @@ export class StockDetailComponent implements OnInit {
     private urlService: UrlService,
     public loader: LoaderServiceService,
     private httpClient: HttpClient,
-
+    public library: FaIconLibrary,
     public perfService: StockPerformanceService)
   {
-    this.stockService.getAPIData(this.url).subscribe(
-      dataFeteched =>{ this.singleStock=dataFeteched,
-                            this.ApiDataIsFetched = true
-                            this.open = this.singleStock.results[0].o
-                            this.close = this.singleStock.results[0].c
-                            console.log(this.ApiDataIsFetched) },
 
 
-      error => { this.callAPIError=error ,console.log("Error ! ", error) }
-
-    )
 
  /*   getDataPerfomance(stock){
     /!* if (this.ApiDataIsFetched){*!/
@@ -68,36 +70,41 @@ export class StockDetailComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.callApi()
+    this.library.addIconPacks(fas)
     this.getStock()
     // console.log(this.url)
     this.getStockName()
     // console.log(this.symbol + " Symbol ")
-   // this.getDataPerfomance()
+    this.getPerformance()
+  }
+
+
+  callApi(){
+    this.stockService.getAPIData(this.url).subscribe(
+      dataFeteched =>{ this.singleStock=dataFeteched,
+        this.ApiDataIsFetched = true
+        this.open = this.singleStock.results[0].o
+        this.close = this.singleStock.results[0].c
+      },
+
+
+      error => { this.callAPIError=error ,console.log("Error ! ", error) }
+
+    )
   }
 
 
 
-  getStockName() {
-    this.stockName = this.stockService.getSingleStock(this.symbol)
-  }
-
-  getStock(): void {
-    let symbol = this.urlService.getSymbol();
-    this.stockService.getStock(symbol)
-      .subscribe(stock => this.stock = stock);
-  }
-
-  url:string  = "https://api.polygon.io/v2/aggs/ticker/" + this.symbol +  "/prev?adjusted=true&apiKey=6YF_nA5aOIv8qC4T83xCKuqVXeoh2RuQ"
 
 
 
-  yearDebut: number = new Date("2022-01-02").getTime()
-  today: number= Date.now()
+  /*today: number= Date.now()
+  yearDebut: number = new Date("2022-01-02").getTime()*/
 
 
-  getPerfomancce(){
+  getPerformance(){
      this.perfResult = this.perfService.getAllPerformanceData(this.open, this.close)
-      console.log(this.perfResult)
 
   }
 
@@ -111,4 +118,29 @@ export class StockDetailComponent implements OnInit {
     this.location.back()
   }
 
+  isPerfShown: boolean = false ; // hidden by default
+
+  togglePerfShow() {
+
+    this.isPerfShown = ! this.isPerfShown;
+
+  }
+
+
+
+
+
+
+  //MockStock
+  getStockName() {
+    this.stockName = this.stockService.getSingleStock(this.symbol)
+  }
+
+
+  //MockStock
+  getStock(): void {
+    let symbol = this.urlService.getSymbol();
+    this.stockService.getStock(symbol)
+      .subscribe(stock => this.stock = stock);
+  }
 }
