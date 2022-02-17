@@ -1,0 +1,25 @@
+.perf{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 200px;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  border-radius: 13px;
+}
+
+.positive-perf{
+  background: linear-gradient(90deg, rgba(65,255,0,1) 0%, rgba(24,56,0,0.28084737312893904) 100%);
+}
+
+.negative-perf{
+  background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(56,0,0,0.4433123591233369) 100%);
+}
+
+.icon-perf{
+  font-size: 50px;
+}
+
+

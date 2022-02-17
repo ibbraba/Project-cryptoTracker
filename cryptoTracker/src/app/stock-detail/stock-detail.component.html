@@ -36,7 +36,8 @@
 </div>
 
 
-<!--TODO: Create app-stock-performance module-->
+<!--
+&lt;!&ndash;TODO: Create app-stock-performance module&ndash;&gt;
 <button class="btn btn-info btn-center my-3" (click)="togglePerfShow()">Get Performance</button>
 
 <div *ngIf="isPerfShown">
@@ -58,8 +59,11 @@
   </ng-template>
 
 </div>
+-->
 
+<!--<button (click)="switchData()">Switch</button>-->
 
+<app-stock-performance [apiData]="apiData" > </app-stock-performance>
 
 
 <app-stock-chart></app-stock-chart>
@@ -67,3 +71,4 @@
 
 
 
+<!--<button class="btn btn-dark" (click)="switchData()">Switch</button>-->

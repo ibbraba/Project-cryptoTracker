@@ -42,6 +42,8 @@ export class StockPerformanceService {
   }
 
   getVariatione(oldPrice: number, todayPrice: number){
+
+
     let percentage:number = todayPrice / oldPrice
 
 

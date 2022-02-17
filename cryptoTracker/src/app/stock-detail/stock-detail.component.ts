@@ -21,7 +21,11 @@ import {faArrowUp} from "@fortawesome/free-solid-svg-icons/faArrowUp";
   styleUrls: ['./stock-detail.component.css']
 })
 export class StockDetailComponent implements OnInit {
-  @Input() stock?: Stock
+  @Input()
+
+  stock?: Stock
+
+
 
   faArrowUp= faArrowUp
 
@@ -42,6 +46,7 @@ export class StockDetailComponent implements OnInit {
   open: number = 0
   close : number = 0
 
+  apiData: any = [this.open, this.close]
 
 
   constructor(
@@ -76,9 +81,17 @@ export class StockDetailComponent implements OnInit {
     // console.log(this.url)
     this.getStockName()
     // console.log(this.symbol + " Symbol ")
-    this.getPerformance()
+
   }
 
+
+
+/*
+  switchData(){
+    this.apiData = !this.apiData
+    console.log(this.apiData)
+  }
+*/
 
   callApi(){
     this.stockService.getAPIData(this.url).subscribe(
@@ -86,13 +99,17 @@ export class StockDetailComponent implements OnInit {
         this.ApiDataIsFetched = true
         this.open = this.singleStock.results[0].o
         this.close = this.singleStock.results[0].c
+
       },
 
 
       error => { this.callAPIError=error ,console.log("Error ! ", error) }
 
     )
+    this.apiData=[this.open, this.close]
+
   }
+
 
 
 
@@ -102,11 +119,14 @@ export class StockDetailComponent implements OnInit {
   /*today: number= Date.now()
   yearDebut: number = new Date("2022-01-02").getTime()*/
 
+/*
 
   getPerformance(){
-     this.perfResult = this.perfService.getAllPerformanceData(this.open, this.close)
+
+    this.perfResult = this.perfService.getAllPerformanceData(this.open, this.close)
 
   }
+*/
 
 
   // Custom URL OK
@@ -118,13 +138,14 @@ export class StockDetailComponent implements OnInit {
     this.location.back()
   }
 
-  isPerfShown: boolean = false ; // hidden by default
+/*  isPerfShown: boolean = false ; // hidden by default
 
   togglePerfShow() {
 
     this.isPerfShown = ! this.isPerfShown;
 
-  }
+
+  }*/
 
 
 

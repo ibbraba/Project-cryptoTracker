@@ -10,7 +10,7 @@
 
 
   <div *ngIf="isChartCreated == false, else chartDomain">
-  <button class="get-chart text-center btn btn-info" (click)="getChart()">Get Charts </button>
+  <button class="get-chart text-center btn btn-info my-3" (click)="getChart()">Get Charts </button>
   </div>
 
 
@@ -19,7 +19,7 @@
 <ng-template #chartDomain>
 
   <div *ngIf="isChartShown, else ShowChartButton" class="text-center">
-    <button class="get-chart text-center btn btn-info" (click)="toggleChartShow()">Hide Chart</button>
+    <button class="get-chart text-center btn btn-info my-3" (click)="toggleChartShow()">Hide Chart</button>
   </div>
 
   <ng-template #ShowChartButton>

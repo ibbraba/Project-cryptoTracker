@@ -1,1 +1,25 @@
-<h2>OKKK</h2>
+
+<!--<button class="btn btn-primary" (click)="showPerformanceData()">Show Child component data</button>-->
+
+<!--TODO: Create app-stock-performance module-->
+<button class="btn btn-info btn-center my-3" (click)="togglePerfShow()">Get Performance</button>
+
+<div *ngIf="isPerfShown">
+
+
+  <div class="perf positive-perf" *ngIf="perfResult[0], else negativePerformance">
+    <h3>Performance positive</h3>
+    <fa-icon class="icon-perf" icon="angle-up"></fa-icon>
+    <p>Hausse de {{perfResult[1]}} % </p>
+  </div>
+
+
+  <ng-template  #negativePerformance>
+    <div class="perf negative-perf">
+      <h3>Performance négative</h3>
+      <fa-icon class="icon-perf" icon="angle-down"></fa-icon>
+      <p>Baisse de {{perfResult[1]}}</p>
+    </div>
+  </ng-template>
+
+</div>
