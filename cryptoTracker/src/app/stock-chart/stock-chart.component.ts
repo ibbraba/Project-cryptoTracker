@@ -17,9 +17,19 @@ export class StockChartComponent implements OnInit {
   //URL
 
   symbol : string =  String(this.route.snapshot.paramMap.get('symbol'));
-  today:number = Date.now()
+  todayDate:any  = Date.now()
+  timestampDay = 86400000 
+
+
+  
+
+  range=50 
+  
+  startChartDate = this.todayDate - this.range*this.timestampDay
+  
+
   //Range stocks
-  RangeUrl: string = "https://api.polygon.io/v2/aggs/ticker/" + this.symbol +"/range/1/week/2022-01-03/" + this.today + "?adjusted=false&sort=asc&limit=20&apiKey=6YF_nA5aOIv8qC4T83xCKuqVXeoh2RuQ"
+  RangeUrl: string = "https://api.polygon.io/v2/aggs/ticker/" + this.symbol +"/range/1/week/" + this.startChartDate + "/" + this.todayDate + "?adjusted=false&sort=asc&limit=20&apiKey=6YF_nA5aOIv8qC4T83xCKuqVXeoh2RuQ"
 
 
   //Managing API Call
@@ -29,6 +39,8 @@ export class StockChartComponent implements OnInit {
 
   // Custom DateTime
   time: any = []
+  
+  
   customDateTime: any = []
 
   isChartCreated = false
@@ -42,6 +54,9 @@ export class StockChartComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.RangeUrl)
+    console.log("today: " + this.todayDate)
+   // console.log ("Start:" + this.startChartDate);
+    
     this.callRangeData()
     this.getChart()
   }
