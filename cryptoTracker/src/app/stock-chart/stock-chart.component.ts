@@ -53,8 +53,7 @@ export class StockChartComponent implements OnInit {
 ) { }
 
   ngOnInit(): void {
-    console.log(this.RangeUrl)
-    console.log("today: " + this.todayDate)
+
    // console.log ("Start:" + this.startChartDate);
     
     this.callRangeData()
@@ -71,7 +70,7 @@ export class StockChartComponent implements OnInit {
       error => this.error = true
     )
 
-    console.log(this.RangeData + "RangeData")
+
 
     for (let i = 0; i < this.RangeData.results.length; i++) {
 

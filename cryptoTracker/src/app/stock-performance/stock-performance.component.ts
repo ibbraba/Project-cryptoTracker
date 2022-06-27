@@ -2,6 +2,7 @@ import {Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core'
 import {StockPerformanceService} from "../stock-performance.service";
 import { ActivatedRoute } from "@angular/router";
 import {UrlService} from "../url.service";
+import { StockDetailComponent } from '../stock-detail/stock-detail.component';
 
 
 @Component({
@@ -11,13 +12,15 @@ import {UrlService} from "../url.service";
 })
 export class StockPerformanceComponent implements OnChanges {
 
-    @Input()  apiData: any = [];
+    @Input()  apiData :any;
 
     symbol =  String(this.route.snapshot.paramMap.get('symbol'));
     yearDebut: number = new Date("2022-01-02").getTime()
     today: number= Date.now()
     result : any
     perfResult : any
+    open = 55
+    close = 70
 
 
     // Several Urls : TODO: Generate a service for customs Url
@@ -27,13 +30,13 @@ export class StockPerformanceComponent implements OnChanges {
               private route: ActivatedRoute,
               private urlService : UrlService,
               ) {
-    console.log(this.apiData)
+    
     this.getPerformance()
   }
 
 
   ngOnChanges(changes:SimpleChanges): void {
-    console.log(changes)
+   
   }
 
 
@@ -41,9 +44,9 @@ export class StockPerformanceComponent implements OnChanges {
   getPerformance(){
 //  TODO: Fix method returning undefined
 
-
-    this.perfResult = this.stockPerformanceService.getAllPerformanceData( this.apiData.open, this.apiData.close)
-    console.log(this.perfResult)
+  console.log("ApiData :" + this.apiData)
+    this.perfResult = this.stockPerformanceService.getAllPerformanceData( this.open, this.close)
+    
   }
 
   isPerfShown: boolean = false ; // hidden by default
