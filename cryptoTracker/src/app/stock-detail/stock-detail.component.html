@@ -11,7 +11,6 @@
 </div>
 
 
-
 <div class="text-center" *ngIf="callAPIError">
   Erreur {{ callAPIError.status}}
   <p class="text-danger"> {{callAPIError.statusText}} </p>
@@ -63,7 +62,7 @@
 
 <!--<button (click)="switchData()">Switch</button>-->
 
-<app-stock-performance [apiData]="apiData"> </app-stock-performance>
+<app-stock-performance [singlestock]="singleStock"> </app-stock-performance>
 
 
 <app-stock-chart></app-stock-chart>

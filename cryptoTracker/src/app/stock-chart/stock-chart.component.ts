@@ -23,7 +23,7 @@ export class StockChartComponent implements OnInit {
 
   
 
-  range=50 
+  range=24
   
   startChartDate = this.todayDate - this.range*this.timestampDay
   

@@ -45,9 +45,9 @@ export class StockDetailComponent implements OnInit {
 
 
 
-  apiData: any = []
-  open : Number = 0
-  close : Number = 0 
+  apiData: {} = {}
+  open : any
+  close : any 
 
 
   constructor(
@@ -76,18 +76,20 @@ export class StockDetailComponent implements OnInit {
 
 
   ngOnInit(): void {
+    console.log(this.ApiDataIsFetched);
+    
     this.callApi()
     
-    console.log(this.open, this.close)
+    console.log(this.ApiDataIsFetched);
+
 
     this.library.addIconPacks(fas)
 
     this.getStock()
     // console.log(this.url)
     this.getStockName()
-    this.apiData.push(this.open)
-    this.apiData.push(this.close)
-    console.log("APIDATA" + this.apiData)
+    
+    console.log(this.apiData)
     // console.log(this.symbol + " Symbol ")
     
   }
@@ -105,13 +107,12 @@ export class StockDetailComponent implements OnInit {
     this.stockService.getAPIData(this.url).subscribe(
       dataFeteched =>{ this.singleStock=dataFeteched,
         this.ApiDataIsFetched = true
-        console.log(this.singleStock)
-   
-      
-      },
+         
+        },
 
 
       error => { this.callAPIError=error ,console.log("Error ! ", error) },
+     
 
       
       

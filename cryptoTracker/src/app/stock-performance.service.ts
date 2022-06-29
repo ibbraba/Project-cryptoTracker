@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { faPercentage } from '@fortawesome/free-solid-svg-icons';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,10 @@ export class StockPerformanceService {
 
 
   getAllPerformanceData(open:any , close:any){
+   
+    console.log("Open " + open + " close " + close + " % " );
+
+
     this.gain = this.getGain(open, close)
     this.variation = this.getVariatione(open, close)
 
@@ -35,20 +40,21 @@ export class StockPerformanceService {
 
 
 
-  getGain(oldPrice: number, todayPrice: number){
+  getGain(open : any, close: any){
     // If oldPrice = todayPrice  => true (Green Bgc)
     let valueUp:boolean
-    return oldPrice > todayPrice ? valueUp = false : valueUp = true
+    return open > close ? valueUp = false : valueUp = true
   }
 
-  getVariatione(oldPrice: number, todayPrice: number){
+  getVariatione(open : number, close: number){
+    //Calcul variation : VA-VD / VD
+    let numerateur = close - open;
+
+    var percentage = numerateur / close * 100;
 
 
-    let percentage:number = todayPrice / oldPrice
 
-
-
-    return percentage
+    return percentage.toFixed(2)
   }
 
 

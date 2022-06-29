@@ -12,15 +12,15 @@ import { StockDetailComponent } from '../stock-detail/stock-detail.component';
 })
 export class StockPerformanceComponent implements OnChanges {
 
-    @Input()  apiData :any;
+    @Input()  singlestock: any;
 
     symbol =  String(this.route.snapshot.paramMap.get('symbol'));
     yearDebut: number = new Date("2022-01-02").getTime()
     today: number= Date.now()
     result : any
     perfResult : any
-    open = 55
-    close = 70
+    open = 0
+    close = 0
 
 
     // Several Urls : TODO: Generate a service for customs Url
@@ -31,30 +31,41 @@ export class StockPerformanceComponent implements OnChanges {
               private urlService : UrlService,
               ) {
     
-    this.getPerformance()
+    
+  }
+
+  ngOnInit(): void {
+    console.log(this.singlestock);
+    
   }
 
 
   ngOnChanges(changes:SimpleChanges): void {
-   
+    if(changes['singlestock']) {
+      console.error(this.singlestock)
+      this.open=this.singlestock.results[0].o
+      this.close=this.singlestock.results[0].c
+      console.log(this.open + " Open " + this.close + " close ");
+      this.getPerformance(this.open, this.close)
+    }
   }
 
 
 
-  getPerformance(){
+  getPerformance(open: any, close:any){
 //  TODO: Fix method returning undefined
 
-  console.log("ApiData :" + this.apiData)
-    this.perfResult = this.stockPerformanceService.getAllPerformanceData( this.open, this.close)
+
+    this.perfResult = this.stockPerformanceService.getAllPerformanceData( open, close)
     
   }
 
   isPerfShown: boolean = false ; // hidden by default
 
   togglePerfShow() {
-    console.log(this.apiData.open, this.apiData.close)
+  
     this.isPerfShown = ! this.isPerfShown;
-    this.apiData=[this.apiData.open, this.apiData.close]
+    //this.apiData=[this.apiData.open, this.apiData.close]
 
   }
 
